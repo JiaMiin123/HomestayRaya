@@ -1,10 +1,10 @@
 <?php
 error_reporting(0);
-if (!isset($_GET['userid'])) {
-$response = array('status' => 'failed', 'data' => null);
-sendJsonResponse($response);
-die();
-}
+//if (!isset($_GET['userid'])) {
+//$response = array('status' => 'failed', 'data' => null);
+//sendJsonResponse($response);
+//die();
+//}
 
 include_once("dbconnect.php");
 $sqlloadproduct = "SELECT * FROM tbl_products ORDER BY product_id DESC";
