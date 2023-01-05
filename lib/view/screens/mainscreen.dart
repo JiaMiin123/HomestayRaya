@@ -64,116 +64,116 @@ class _MainScreenState extends State<MainScreen> {
             ],
           ),
           drawer: MainMenuWidget(user: widget.user),
-          body: productList.isEmpty
-              ? Center(
-                  child: SizedBox(
-                      width: 250,
-                      child: SingleChildScrollView(
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              const Text("Location:",
-                                  style: TextStyle(fontSize: 20)),
-                              TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Where to go?",
-                                  border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              MaterialButton(
-                                  onPressed: () {
-                                    //_pressMe(textEditingController.text);
-                                  },
-                                  color: Theme.of(context).colorScheme.primary,
-                                  child: const Text("Search",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.black,
-                                      ))),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                            ]),
-                      )),
-                )
-              : Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Your current products/services (${productList.length} found)",
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Expanded(
-                      child: GridView.count(
-                        crossAxisCount: rowcount,
-                        children: List.generate(productList.length, (index) {
-                          return Card(
-                            elevation: 8,
-                            child: InkWell(
-                              onTap: () {
-                                _showDetails(index);
-                              },
-                              child: Column(children: [
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Flexible(
-                                  flex: 6,
-                                  child: CachedNetworkImage(
-                                    width: resWidth / 2,
-                                    fit: BoxFit.cover,
-                                    imageUrl:
-                                        "${CONFIG.server}/assets/productimages/${productList[index].productId}.png",
-                                    placeholder: (context, url) =>
-                                        const LinearProgressIndicator(),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
-                                  ),
-                                ),
-                                Flexible(
-                                    flex: 4,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            truncateString(
-                                                productList[index]
-                                                    .productName
-                                                    .toString(),
-                                                15),
-                                            style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                              "RM ${double.parse(productList[index].productPrice.toString()).toStringAsFixed(2)}"),
-                                          Text(df.format(DateTime.parse(
-                                              productList[index]
-                                                  .productDate
-                                                  .toString()))),
-                                        ],
-                                      ),
-                                    ))
-                              ]),
-                            ),
-                          );
-                        }),
-                      ),
-                    )
-                  ],
+          body:
+              // Center(
+              //         child: SizedBox(
+              //             width: 250,
+              //             child: SingleChildScrollView(
+              //               child: Column(
+              //                   mainAxisAlignment: MainAxisAlignment.center,
+              //                   children: <Widget>[
+              //                     const Text("Location:",
+              //                         style: TextStyle(fontSize: 20)),
+              //                     TextField(
+              //                       decoration: InputDecoration(
+              //                         hintText: "Where to go?",
+              //                         border: OutlineInputBorder(
+              //                             borderRadius:
+              //                                 BorderRadius.circular(10.0)),
+              //                       ),
+              //                     ),
+              //                     const SizedBox(
+              //                       height: 8,
+              //                     ),
+              //                     MaterialButton(
+              //                         onPressed: () {
+              //                           //_pressMe(textEditingController.text);
+              //                         },
+              //                         color: Theme.of(context).colorScheme.primary,
+              //                         child: const Text("Search",
+              //                             style: TextStyle(
+              //                               fontSize: 16,
+              //                               color: Colors.black,
+              //                             ))),
+              //                     const SizedBox(
+              //                       height: 8,
+              //                     ),
+              //                   ]),
+              //             )),
+              //       ),
+              Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Your current products/services (${productList.length} found)",
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: rowcount,
+                  children: List.generate(productList.length, (index) {
+                    return Card(
+                      elevation: 8,
+                      child: InkWell(
+                        onTap: () {
+                          _showDetails(index);
+                        },
+                        child: Column(children: [
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Flexible(
+                            flex: 6,
+                            child: CachedNetworkImage(
+                              width: resWidth / 2,
+                              fit: BoxFit.cover,
+                              imageUrl:
+                                  "${CONFIG.server}/assets/productimages/${productList[index].productId}.png",
+                              placeholder: (context, url) =>
+                                  const LinearProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                            ),
+                          ),
+                          Flexible(
+                              flex: 4,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      truncateString(
+                                          productList[index]
+                                              .productName
+                                              .toString(),
+                                          15),
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                        "RM ${double.parse(productList[index].productPrice.toString()).toStringAsFixed(2)}"),
+                                    Text(df.format(DateTime.parse(
+                                        productList[index]
+                                            .productDate
+                                            .toString()))),
+                                  ],
+                                ),
+                              ))
+                        ]),
+                      ),
+                    );
+                  }),
+                ),
+              )
+            ],
+          ),
         ));
   }
 
